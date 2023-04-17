@@ -12,23 +12,37 @@ const { NotImplementedError } = require('../extensions/index.js');
  * stack.pop(); // undefined
  *
  */
+
+class ListNode {
+    constructor(element) {
+      this.value = element;
+      this.next = null;
+    }
+}
+
 class Stack {
-  push(/* element */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
 
-  pop() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    constructor() {
+        this.top = null;
+    }
 
-  peek() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    push(element) {
+        let temp = new ListNode(element);
+        temp.next = this.top;
+        this.top = temp;
+    }
+
+    pop() {
+        let peek = this.top.value;
+        this.top = this.top.next;
+        return peek;
+    }
+
+    peek() {
+        return this.top.value;
+    }
 }
 
 module.exports = {
-  Stack
+    Stack
 };
